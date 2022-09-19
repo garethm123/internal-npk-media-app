@@ -1,4 +1,5 @@
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { TouchableOpacity, StyleSheet } from "react-native";
+import { AppText } from "./appText";
 
 type IButton = {
   btnLabel: string;
@@ -8,7 +9,7 @@ type IButton = {
 export default function Button({ btnLabel, onClick }: IButton) {
   return (
     <TouchableOpacity style={ButtonStyles.button} onPress={() => onClick()}>
-      <Text style={ButtonStyles.buttonText}>{btnLabel}</Text>
+      <AppText str={btnLabel} level='body'/>
     </TouchableOpacity>
   )
 }
