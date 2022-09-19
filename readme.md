@@ -1,3 +1,9 @@
 # Internal NPK Media Meetings and events calendar app
 
-wip
+# /app 
+
+React Native app
+
+# /backend
+
+Stack to be decided
