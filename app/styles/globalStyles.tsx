@@ -9,5 +9,9 @@ export const globalStyles = StyleSheet.create({
   bodyText: {
     fontFamily: 'montserrat-regular',
     fontSize: 18
+  },
+  fullWidthPaddedContainer: {
+    width: '100%',
+    padding: 24,
   }
 })

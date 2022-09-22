@@ -4,22 +4,23 @@ import Button from "../button"
 import { LoginSchema } from "./formValidations"
 import Input from "./input"
 
-
 type IForm = {
   initialValues: {[x: string]: any}
   formFields: Array<{
     placeholder: string;
     fieldId: string;
   }>;
+  validationSchema?: any;
+  submitBtnText: string;
   handleFormSubmit: () => void;
-}
+};
 
-export default function Form({ initialValues, formFields, handleFormSubmit }: IForm) {
+export default function Form({ initialValues, formFields, validationSchema, submitBtnText, handleFormSubmit }: IForm) {
   return (
     <View style={FormStyles.formWrap}>
       <Formik
         initialValues={initialValues}
-        validationSchema={LoginSchema}
+        validationSchema={validationSchema ?? null}
         onSubmit={(values, actions) => {
           handleFormSubmit()
         }}
@@ -36,8 +37,9 @@ export default function Form({ initialValues, formFields, handleFormSubmit }: IF
               />
             ))}      
             <Button 
-              btnLabel="Log in to your account"
+              btnLabel={submitBtnText}
               onClick={() => props.handleSubmit()}
+              variant='dark'
             />    
           </View>
         )}
@@ -49,6 +51,6 @@ export default function Form({ initialValues, formFields, handleFormSubmit }: IF
 const FormStyles = StyleSheet.create({
   formWrap: {
     width: '100%',
-    padding: 24,
+    paddingVertical: 24
   }
 })

@@ -15,7 +15,7 @@ export const AppText = ({ str, level }: IAppText) => {
 
 const AppTextStyles = StyleSheet.create({
   h1: {
-
+    fontSize: 24
   },
   h2: {
 

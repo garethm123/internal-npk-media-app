@@ -12,3 +12,6 @@ app/web-build/
 
 # macOS
 app/.DS_Store
+
+
+backend/node_modules
