@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-export const globalStyles = StyleSheet.create({
+export const GlobalStyles = StyleSheet.create({
   titleText: {
     fontFamily: 'montserrat-bold',
     fontSize: 24,
@@ -13,5 +13,19 @@ export const globalStyles = StyleSheet.create({
   fullWidthPaddedContainer: {
     width: '100%',
     padding: 24,
+  },
+  modalWrapper: {
+    width: '100%',
+    height: '100%',
+    marginVertical: 90,
+    background: '#96c6d9'
+  },
+  ceteredContent: {
+    height: '100%',
+    width: '100%',
+    padding: 24,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
   }
 })
