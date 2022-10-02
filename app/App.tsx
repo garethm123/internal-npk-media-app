@@ -1,9 +1,11 @@
 // import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, View } from "react-native";
 import { useLoadResources } from "./hooks/useLoadResources";
-import AuthProvider from "./contexts/authContext";
+import AuthProvider, { AuthContext } from "./contexts/authContext";
 import { NavigationContainer } from "@react-navigation/native";
 import BottomNavigation from "./components/bottomNavigation";
+import { useContext } from "react";
+import LoggedOutScreen from "./screens/loggedOut";
 
 export default function App() {
   const appIsReady = useLoadResources();
@@ -14,11 +16,23 @@ export default function App() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: "#fba220" }}>
         <AuthProvider>
-          <NavigationContainer>
-            <BottomNavigation />
-          </NavigationContainer>
+          <AppContent />
         </AuthProvider>
       </SafeAreaView>
     );
+  }
+}
+
+const AppContent = () => {
+  const { authed } = useContext(AuthContext)
+
+  if (authed) {
+    return (
+      <NavigationContainer>
+        <BottomNavigation />
+      </NavigationContainer>
+    )
+  } else {
+    return <LoggedOutScreen />
   }
 }

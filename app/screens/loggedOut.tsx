@@ -14,43 +14,45 @@ export default function LoggedOutScreen() {
   const [modalToShow, setModalToShow] = useState<null | IPopoverType>(null);
 
   return (
-    <View style={GlobalStyles.ceteredContent}>
-      <View>
-        <Image source={require("../assets/npkLogo.png")} />
-        <AppText text='NPK Media Calendar & Events' level='h1' />
+    <View style={GlobalStyles.yellowBackground}>
+      <View style={GlobalStyles.fullWidthPaddedContainer}>
+        <View>
+          <Image source={require("../assets/npkLogo.png")} style={{ marginBottom: 16 }}/>
+          <AppText text='NPK Media Calendar & Events' level='h1' />
+        </View>
+
+        <FlexGapGroup
+          components={[
+            {
+              component: (
+                <Button
+                  btnLabel='Login'
+                  variant='dark'
+                  onClick={() => setModalToShow("login")}
+                />
+              ),
+              id: "loginButton",
+            },
+            {
+              component: (
+                <Button
+                  btnLabel='Register'
+                  variant='dark'
+                  onClick={() => setModalToShow("register")}
+                />
+              ),
+              id: "registerButton",
+            },
+          ]}
+        />
+
+        <ModalWrapper
+          showModal={modalToShow !== null}
+          closeModal={() => setModalToShow(null)}
+        >
+          {modalToShow === "login" ? <LoginModal /> : <RegisterAccountModal />}
+        </ModalWrapper>
       </View>
-
-      <FlexGapGroup
-        components={[
-          {
-            component: (
-              <Button
-                btnLabel='Login'
-                variant='dark'
-                onClick={() => setModalToShow("login")}
-              />
-            ),
-            id: "loginButton",
-          },
-          {
-            component: (
-              <Button
-                btnLabel='Register'
-                variant='dark'
-                onClick={() => setModalToShow("register")}
-              />
-            ),
-            id: "registerButton",
-          },
-        ]}
-      />
-
-      <ModalWrapper
-        showModal={modalToShow !== null}
-        closeModal={() => setModalToShow(null)}
-      >
-        {modalToShow === "login" ? <LoginModal /> : <RegisterAccountModal />}
-      </ModalWrapper>
     </View>
   );
 }
