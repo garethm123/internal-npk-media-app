@@ -29,7 +29,7 @@ const CardStyles = StyleSheet.create({
     padding: 24,
     border: "solid",
     borderWidth: 1,
-    borderColor: "#96c6d9",
+    borderColor: "black",
     marginTop: 24,
   },
   contents: {
